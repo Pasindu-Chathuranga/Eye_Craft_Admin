@@ -1,0 +1,14 @@
+.navbar-container {
+    background-color: #D9D9D9;
+    background-image: url('../../images/bg/contact-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70vw;
+    height: 40vh;
+    margin-top: -22px;
+    position: sticky;
+    top: 40%;
+    left: 10%;
+    z-index: 1000;
+}

@@ -1,0 +1,267 @@
+/* Styles for screens smaller than 768px (typical mobile devices) */
+@media screen and (max-width: 767px) {
+    .concept-container {
+        background-color: #162F48;
+        padding-bottom: 10%;
+    }
+
+    .concept-title {
+        margin: 5%;
+        margin-top: 0;
+        padding-top: 5%;
+        margin-left: 13%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        font-size: 30px;
+        border-bottom: #be9a71 1px solid;
+        border-top: #be9a71 1px solid;
+        padding-bottom: 5%;
+    }
+
+    .concept-item-container {
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5%;
+        min-height: auto;
+    }
+
+    .card-container-1,
+    .card-container-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: 5%;
+        margin-left: 8%;
+        margin-right: 5%;
+        background-color: rgba(22, 47, 72, 0.37);
+        padding: 2%;
+        border: 1px solid #D2B583;
+        border-radius: 15px;
+        min-height: 30vh;
+        background-color: #d2d2d267;
+        width: 85%;
+        /* Centered and added margin */
+        min-height: auto;
+        /* Remove minimum height */
+    }
+
+    .card-image-1,
+    .card-image-2 {
+        min-width: 90%;
+        /* Adjusted width for mobile */
+        height: 30vh;
+        /* Adjusted height for mobile */
+        margin: 5% auto;
+        /* Centered and added margin */
+    }
+
+    .card-image-1 {
+        background-image: url('../../images/concept/image-1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 23vw;
+        height: 15vh;
+        border-radius: 15px;
+    }
+
+    .card-inside-image {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #fdfdfd4b;
+        backdrop-filter: blur(5px);
+        width: 98%;
+        height: 100%;
+        border-radius: 15px;
+        padding: 1%;
+        object-fit: contain;
+        object-position: bottom;
+    }
+
+    .card-image-2 {
+        background-image: url('../../images/concept/image-1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 23vw;
+        height: 15vh;
+        border-radius: 15px;
+    }
+
+    .card-text-wrapper {
+        margin-top: 5%;
+        /* Adjusted margin */
+        min-height: 20vh;
+        /* Adjusted height for mobile */
+    }
+
+    .card-text-1,
+    .card-text-2 {
+        min-height: 30vh;
+        margin-left: 5%;
+        color: #fff3de;
+        /* Adjusted height for mobile */
+        margin-top: 5%;
+        /* Adjusted margin */
+    }
+}
+
+/* Styles for screens between 768px and 1023px */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .concept-title {
+        margin-left: 10%;
+        /* Adjusted margin */
+    }
+
+    .concept-item-container {
+        padding-left: 10%;
+        /* Adjusted padding */
+    }
+
+    .card-container-1,
+    .card-container-2 {
+        width: 45%;
+        /* Adjusted width for tablets */
+        margin-left: 5%;
+        /* Adjusted margin */
+    }
+
+    .card-text-wrapper {
+        margin-top: 7%;
+        /* Adjusted margin */
+    }
+}
+
+@media screen and (min-width: 1023px) {
+
+    /* Default styles for screens larger than 1023px */
+    .concept-container {
+        background-image: url('../../images/bg/concept-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+        margin-top: -22px;
+    }
+
+    .concept-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2%;
+        justify-content: flex-start;
+        margin-bottom: 0;
+        margin-left: 10%;
+    }
+
+    .concept-item-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding-left: 5%;
+        min-height: 40vh;
+    }
+
+    .card-container-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: rgba(22, 47, 72, 0.27);
+        padding: 2%;
+        border: 1px solid #D2B583;
+        border-radius: 15px;
+        width: 40%;
+        backdrop-filter: blur(5px);
+        min-height: 40vh;
+        background-color: #d2d2d267;
+    }
+
+    .card-container-2 {
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+        justify-content: space-around;
+        margin-top: 5%;
+        border-radius: 15px;
+        width: 40%;
+    }
+
+    .card-text-wrapper {
+        background-color: #d2d2d267;
+        padding: 4%;
+        border-radius: 15px;
+        margin-top: 7%;
+        border: 1px solid #D2B583;
+        min-height: 20vh;
+    }
+
+    .card-text-1 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1C354D;
+        background-color: #D2D2D2;
+        border: 1px solid #D2B583;
+        border-radius: 15px;
+        margin-top: 3%;
+        text-align: start;
+        min-height: 30vh;
+        padding: 2%;
+    }
+
+    .card-text-2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #162F48;
+        background-color: #D2D2D2;
+        border-radius: 15px;
+        text-align: start;
+        min-height: 30vh;
+        padding: 2%;
+    }
+
+    .card-image-1 {
+        background-image: url('../../images/concept/image-1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 23vw;
+        height: 15vh;
+        border-radius: 15px;
+        background-color: #162F48;
+    }
+
+    .card-inside-image {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #fdfdfd4b;
+        backdrop-filter: blur(5px);
+        width: 96%;
+        height: 90%;
+        padding: 2%;
+        border-radius: 15px;
+        object-fit: contain;
+    }
+
+    .card-image-2 {
+        background-image: url('../../images/concept/image-1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 23vw;
+        height: 15vh;
+        border-radius: 15px;
+        background-color: #162F48;
+    }
+}
