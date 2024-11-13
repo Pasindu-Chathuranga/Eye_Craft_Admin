@@ -1,60 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import '../admin-style.css'
+import InboxIcon from '@mui/icons-material/Inbox';
 import axios from "axios";
 import { API_URL } from "../../../const/api_url";
-import InboxIcon from '@mui/icons-material/Inbox';
 import {
     Button,
     Dialog,
     DialogActions,
     DialogContent,
-    DialogTitle
+    DialogTitle,
+    Grid,
+    Box,
+    Typography,
+    IconButton,
 } from '@mui/material';
+import { useSnackbar } from "notistack";
 
 const ItemGrid = (props) => {
-    const { handleEditItem, handleVisibility, handleSetImage, visibility } = props;
-    const [items, setItems] = useState([]);
+    const { handleEditItem, handleVisibility, handleSetImage, items, refetchFlag, setRefetchFlag } = props;
     const [deleteItemId, setDeleteItemId] = useState(null);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-
-    useEffect(() => {
-        fetchData();
-    }, [visibility]);
-
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(API_URL + '/image/get');
-            console.log(response.data)
-            if (!response) {
-                throw new Error('Network response was not ok');
-            }
-            setItems(response.data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+    const { enqueueSnackbar } = useSnackbar();
 
     const handleDeleteItem = async () => {
         try {
-            await axios.delete(API_URL + '/image/delete/' + deleteItemId);
-            fetchData();
+            await axios.delete(`${API_URL}/image/delete/${deleteItemId}`);
+            setRefetchFlag(true); // Trigger refetch after deletion
             closeDeleteDialog();
-            alert('Item deleted successfully');
+            enqueueSnackbar('Item deleted successfully', { variant: 'success' });
         } catch (error) {
+            enqueueSnackbar('Error deleting item', { variant: 'error' });
             console.error('Error deleting item:', error);
         }
     };
 
     const handleEdit = (item) => {
-        handleEditItem(item)
-        handleVisibility(true)
-        handleSetImage(item.image_url)
+        handleEditItem(item);
+        handleVisibility(true);
+        handleSetImage(item.image_url);
     };
 
     const openDeleteDialog = (item) => {
-        console.log(item)
         setDeleteItemId(item._id);
         setIsDeleteDialogOpen(true);
     };
@@ -65,60 +52,104 @@ const ItemGrid = (props) => {
     };
 
     return (
-        <>
+        <Box p={3} sx={{ height: 500, overflowY: 'auto' }}>
             {items.length !== 0 ? (
-                <div className="item-gride-container">
+                <Grid container spacing={3} justifyContent="start">
                     {items.map((item, index) => (
-                        <div key={index} className="item-grid-item">
-                            <div className="item-grid-item-image">
-                                <img src={item.image_url} alt={`Item ${index}`} width={'180px'} style={{ borderRadius: '5px' }} />
-                            </div>
-                            <div className="item-grid-item-data">
-                                <div className="item-grid-item-title">Eye Count: <strong>{item.eye_count}</strong> </div>
-                                <div className="item-grid-item-title">Print Style: <strong>{item.print_style}</strong></div>
-                                <div className="item-grid-item-title">Size:<strong>{item.size}</strong></div>
-                                <div className="item-grid-item-title">Frame: <strong>{item.frame}</strong></div>
-                                <div className="item-grid-item-title">Effect: <strong>{item.effect}</strong></div>
-                                <div className="item-grid-item-title">Duo Custom Effect: <strong>{item.duo_custom_effects}</strong></div>
-                            </div>
-                            <div className="item-grid-item-action">
-                                <div className="item-grid-item-action-icon">
-                                    <EditIcon onClick={() => handleEdit(item)} />
-                                    <DeleteIcon onClick={() => openDeleteDialog(item)} />
-                                </div>
-                            </div>
-                        </div>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <Box
+                                sx={{
+                                    boxShadow: 3,
+                                    borderRadius: 2,
+                                    overflow: 'hidden',
+                                    bgcolor: 'background.paper',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    border: '1px solid #1c1c1c',
+                                    p: 2,
+                                    maxHeight: '450px',
+                                    minHeight: '450px',
+                                }}
+                            >
+                                <Box sx={{ mb: 2, maxHeight: '200px', minHeight: '200px' }}>
+                                    <img
+                                        src={item.image_url}
+                                        alt={`Item ${index}`}
+                                        width="100%"
+                                        height="200px"
+                                        style={{
+                                            borderRadius: 8,
+                                            objectFit: 'cover',
+                                        }}
+                                    />
+                                </Box>
+                                <Box sx={{ textAlign: 'center', width: '100%' }}>
+                                    <Typography variant="body1" component="div">
+                                        <strong>Eye Count:</strong> {item.eye_count}
+                                    </Typography>
+                                    <Typography variant="body1" component="div">
+                                        <strong>Print Style:</strong> {item.print_style}
+                                    </Typography>
+                                    <Typography variant="body1" component="div">
+                                        <strong>Size:</strong> {item.size}
+                                    </Typography>
+                                    <Typography variant="body1" component="div">
+                                        <strong>Frame:</strong> {item.frame}
+                                    </Typography>
+                                    <Typography variant="body1" component="div">
+                                        <strong>Effect:</strong> {item.effect}
+                                    </Typography>
+                                    {item.duo_custom_effects && (
+                                        <Typography variant="body1" component="div">
+                                            <strong>Duo Custom Effect:</strong> {item.duo_custom_effects}
+                                        </Typography>
+                                    )}
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                                    <div style={{ border: '1px solid #1c1c1c', borderRadius: '5px', padding: '5px' }}>
+                                        <IconButton color="primary" onClick={() => handleEdit(item)}>
+                                            <EditIcon />
+                                        </IconButton>
+                                    </div>
+                                    <div style={{ border: '1px solid #1c1c1c', borderRadius: '5px', padding: '5px' ,marginLeft: '15px' }}>
+                                        <IconButton color="error" onClick={() => openDeleteDialog(item)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </div>
+                                </Box>
+                            </Box>
+                        </Grid>
                     ))}
-                </div>
+                </Grid>
             ) : (
-                <div className="no-item-message">
-                    <InboxIcon />
-                    <div className="no-item-message-text">No items found</div>
-                </div>
+                <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={4}>
+                    <InboxIcon fontSize="large" color="disabled" />
+                    <Typography variant="h6" color="textSecondary">
+                        No items found
+                    </Typography>
+                </Box>
             )}
 
             {/* Delete Confirmation Dialog */}
-            <Dialog
-                open={isDeleteDialogOpen}
-                onClose={closeDeleteDialog}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">{"Delete Item?"}</DialogTitle>
+            <Dialog open={isDeleteDialogOpen} onClose={closeDeleteDialog}>
+                <DialogTitle>Confirm Deletion</DialogTitle>
                 <DialogContent>
-                    <div>Are you sure you want to delete this item?</div>
+                    <Typography>
+                        Are you sure you want to delete this item?
+                    </Typography>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={closeDeleteDialog} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleDeleteItem} color="error" autoFocus>
+                    <Button onClick={handleDeleteItem} color="error">
                         Delete
                     </Button>
                 </DialogActions>
             </Dialog>
-        </>
+        </Box>
     );
-}
+};
 
 export default ItemGrid;
