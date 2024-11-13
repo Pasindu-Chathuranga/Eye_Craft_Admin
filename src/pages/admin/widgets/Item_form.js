@@ -51,8 +51,7 @@ const ItemForm = ({ editItem, onCancel, onSave }) => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = async (e) => {
-        console.log(formData)
+    const handleSubmit = async (e) => { 
         e.preventDefault();
         if (!validateForm()) {
             setNotification({ open: true, message: 'Please fill in all required fields.', severity: 'warning' });
@@ -63,14 +62,14 @@ const ItemForm = ({ editItem, onCancel, onSave }) => {
             const response = editItem.eye_count
                 ? await axios.put(`${API_URL}/image/update/${editItem._id}`, formData).then(() => {
                     setNotification({ open: true, message: 'Item saved successfully', severity: 'success' });
-                    onCancel()
+                    onCancel(false)
                     onSave();
                 }).catch(() => {
                     setNotification({ open: true, message: 'Failed to save item', severity: 'error' });
                 })
                 : await axios.post(`${API_URL}/image/add`, formData).then(() => {
                     setNotification({ open: true, message: 'Item saved successfully', severity: 'success' });
-                    onCancel()
+                    onCancel(false)
                     onSave();
                 }).catch(() => {
                     setNotification({ open: true, message: 'Failed to save item', severity: 'error' });
@@ -80,7 +79,7 @@ const ItemForm = ({ editItem, onCancel, onSave }) => {
             setNotification({ open: true, message: 'Error saving item', severity: 'error' });
         }
     };
-
+ 
     useEffect(() => {
         if (editItem) {
             setFormData({
@@ -114,10 +113,10 @@ const ItemForm = ({ editItem, onCancel, onSave }) => {
             </Typography>
             <form onSubmit={handleSubmit} noValidate>
                 <Grid container spacing={3}>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} sm={12}>
                         <ImageUpload handleImageUrl={(url) => handleChange('image_url', url)} imageurl={formData.image_url} />
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={8} sm={12}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} sm={12}>
                                 <FormControl component="fieldset" error={!!errors.eye_count}>
@@ -235,7 +234,7 @@ const ItemForm = ({ editItem, onCancel, onSave }) => {
                             </Grid>
                         </Grid>
                         <Grid item xs={12} mt={5} display="flex" justifyContent="flex-end">
-                            <Button type="button" variant="contained" color="secondary" sx={{ marginRight: '10px' }} size="large" onClick={onCancel}>
+                            <Button type="button" variant="contained" color="secondary" sx={{ marginRight: '10px' }} size="large" onClick={()=>onCancel(false)}>
                                 Cancel
                             </Button>
                             <Button type="submit" variant="contained" color="primary" size="large">

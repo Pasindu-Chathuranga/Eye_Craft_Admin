@@ -75,6 +75,9 @@ body {
     z-index: 110;
     position: 'fixed';
     top: '0px';
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
 }
 
 .admin-container-header-title {
@@ -510,4 +513,16 @@ body {
 
 .item-panel-form-btn-cancel:hover {
     background-color: #be8b33;
+}
+.loginback{
+    background-image: url('../../images/admin/admin-bg.png');
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    width: 60%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

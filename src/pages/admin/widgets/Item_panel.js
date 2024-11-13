@@ -34,9 +34,14 @@ const ItemPanel = () => {
         setShouldRefetch(false);
     }, [shouldRefetch]);
 
-    const handleVisibility = () => {
-        setVisibility(prev => !prev);
+    const handleVisibility = (value) => {
+        setVisibility(value);
         if (visibility) setEditItem({});
+    };
+
+    const handleEditItem = (item) => {
+        setEditItem(item);
+        handleVisibility(true);
     };
 
     const handleFilterChange = ({ target: { name, value } }) => {
@@ -60,20 +65,20 @@ const ItemPanel = () => {
     };
 
     return (
-        <Box  p={3} sx={{ bgcolor: 'background.paper', borderRadius: '10px ', width: '55%',maxHeight: '88vh' }}>
-            <Grid container spacing={3} justifyContent="start" sx={{ bgcolor: 'background.paper', borderRadius: '10px 10px 0px 0px', width: '104.5%',boxShadow:' 2px 2px 10px 0 rgba(0, 0, 0, 0.5)' }}>
+        <Box  sx={{ bgcolor: 'rgba(255,255,255,0.8)', borderRadius: '10px ', width: '100%'  }}>
+            <Grid container   justifyContent="start" sx={{ bgcolor: 'background.paper', borderRadius: '10px 10px 0px 0px', width: '100%',boxShadow:' 2px 2px 10px 0 rgba(0, 0, 0, 0.5)' }}>
                 {/* Header and Add Button on the same row */}
-                <Grid item xs={12} sx={{ borderBottom: '1px #1c1c1c solid', paddingBottom: '10px' }}>
+                <Grid item xs={12} p={3} sx={{ borderBottom: '1px #1c1c1c solid', paddingBottom: '10px' }}>
                     <Grid container alignItems="center" justifyContent="space-between">
                         <Typography variant="h3" className="item-panel-header-title" sx={{ fontSize: '1.5rem' }}>Items</Typography>
-                        <Button onClick={handleVisibility} mr={3} color="primary" aria-label="add item" sx={{ fontSize: '0.875rem', marginRight: '20px' }}>
-                            {visibility ? <CloseIcon sx={{ fontSize: '1.2rem' }} /> : <><AddIcon sx={{ fontSize: '1.2rem' }} /> Add New Item</>}
+                        <Button variant="contained" onClick={() => handleVisibility(!visibility)} mr={3} color="primary" aria-label="add item" sx={{ fontSize: '0.875rem', marginRight: '20px' }}>
+                            {visibility ? <CloseIcon sx={{ fontSize: '1.2rem' }}  /> : <><AddIcon sx={{ fontSize: '1.2rem' }} /> Add New Item</>}
                         </Button>
                     </Grid>
                 </Grid>
                 {/* Filters in the row below */}
                 {!visibility && (
-                    <Grid item xs={12} pb={3}>
+                    <Grid item xs={12} pb={3} pl={3} pt={3}>
                         <Grid container spacing={1} justifyContent="start">
                             {['eye_count', 'print_style', 'size', 'frame', 'effect'].map((filter) => (
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -124,7 +129,7 @@ const ItemPanel = () => {
                 <ItemForm editItem={editItem} onCancel={handleVisibility} onSave={() => { enqueueSnackbar('Item saved!', { variant: 'success' }); setShouldRefetch(true); }} />
             ) : (
                 <ItemGrid
-                    handleEditItem={item => { setEditItem(item); handleVisibility(); }}
+                    handleEditItem={handleEditItem}
                     items={filteredItems}
                     handleVisibility={handleVisibility}
                     setRefetchFlag={setShouldRefetch}

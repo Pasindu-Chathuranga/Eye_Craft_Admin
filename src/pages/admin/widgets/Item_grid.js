@@ -18,7 +18,7 @@ import {
 import { useSnackbar } from "notistack";
 
 const ItemGrid = (props) => {
-    const { handleEditItem, handleVisibility, handleSetImage, items, refetchFlag, setRefetchFlag } = props;
+    const { handleEditItem, handleVisibility, items, setRefetchFlag } = props;
     const [deleteItemId, setDeleteItemId] = useState(null);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const { enqueueSnackbar } = useSnackbar();
@@ -38,7 +38,6 @@ const ItemGrid = (props) => {
     const handleEdit = (item) => {
         handleEditItem(item);
         handleVisibility(true);
-        handleSetImage(item.image_url);
     };
 
     const openDeleteDialog = (item) => {
@@ -52,11 +51,11 @@ const ItemGrid = (props) => {
     };
 
     return (
-        <Box p={3} sx={{ height: 500, overflowY: 'auto' }}>
+        <Box p={3} sx={{  overflowY: 'auto' }}>
             {items.length !== 0 ? (
                 <Grid container spacing={3} justifyContent="start">
                     {items.map((item, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={index}>
+                        <Grid item xs={12} sm={6} md={3} key={index}>
                             <Box
                                 sx={{
                                     boxShadow: 3,
@@ -68,8 +67,8 @@ const ItemGrid = (props) => {
                                     alignItems: 'center',
                                     border: '1px solid #1c1c1c',
                                     p: 2,
-                                    maxHeight: '450px',
-                                    minHeight: '450px',
+                                    maxHeight: '510px',
+                                    minHeight: '510px',
                                 }}
                             >
                                 <Box sx={{ mb: 2, maxHeight: '200px', minHeight: '200px' }}>
@@ -84,27 +83,30 @@ const ItemGrid = (props) => {
                                         }}
                                     />
                                 </Box>
-                                <Box sx={{ textAlign: 'center', width: '100%' }}>
-                                    <Typography variant="body1" component="div">
+                                <Box sx={{ textAlign: 'start', width: '100%' }}>
+                                    <Typography variant="body1"  mb={1} component="div">
                                         <strong>Eye Count:</strong> {item.eye_count}
                                     </Typography>
-                                    <Typography variant="body1" component="div">
+                                    <Typography variant="body1"  mb={1} component="div">
                                         <strong>Print Style:</strong> {item.print_style}
                                     </Typography>
-                                    <Typography variant="body1" component="div">
+                                    <Typography variant="body1"  mb={1} component="div">
                                         <strong>Size:</strong> {item.size}
                                     </Typography>
-                                    <Typography variant="body1" component="div">
+                                    <Typography variant="body1"  mb={1} component="div">
                                         <strong>Frame:</strong> {item.frame}
                                     </Typography>
-                                    <Typography variant="body1" component="div">
+                                    <Typography variant="body1"  mb={1} component="div">
                                         <strong>Effect:</strong> {item.effect}
                                     </Typography>
                                     {item.duo_custom_effects && (
-                                        <Typography variant="body1" component="div">
+                                        <Typography variant="body1"  mb={1} component="div">
                                             <strong>Duo Custom Effect:</strong> {item.duo_custom_effects}
                                         </Typography>
                                     )}
+                                    <Typography variant="body1"  mb={1} component="div">
+                                        <strong>Price:</strong> Rs.{item.price}.00
+                                    </Typography>
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                                     <div style={{ border: '1px solid #1c1c1c', borderRadius: '5px', padding: '5px' }}>
@@ -112,7 +114,7 @@ const ItemGrid = (props) => {
                                             <EditIcon />
                                         </IconButton>
                                     </div>
-                                    <div style={{ border: '1px solid #1c1c1c', borderRadius: '5px', padding: '5px' ,marginLeft: '15px' }}>
+                                    <div style={{ border: '1px solid #1c1c1c', borderRadius: '5px', padding: '5px', marginLeft: '15px' }}>
                                         <IconButton color="error" onClick={() => openDeleteDialog(item)}>
                                             <DeleteIcon />
                                         </IconButton>
