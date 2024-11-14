@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Panorama, Inventory, ModeStandby } from '@mui/icons-material';
-import { useSnackbar } from 'notistack';
-import OrdersPanel from './widgets/Order_panel';
-import ItemPanel from './widgets/Item_panel';
+import { useSnackbar } from 'notistack'; 
 import Logo from '../../images/logo-white.PNG';
 import LoginComponent from './widgets/LoginComponent';
+import ItemPanel from './widgets/Items/Item_panel';
+import OrdersPanel from './widgets/Orders/Order_panel';
 
 // Allowed pages (for validation)
 const allowedPages = ['item', 'order'];
