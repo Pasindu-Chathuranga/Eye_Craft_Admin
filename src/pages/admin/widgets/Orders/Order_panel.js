@@ -33,8 +33,30 @@ const OrdersPanel = () => {
         (order.customer_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             order._id.includes(searchTerm)) &&
         (!filter.status || order.order_status === filter.status) &&
-        (!filter.date || new Date(order.createdAt).toLocaleDateString() === filter.date)
+        (!filter.date || new Date(order.createdAt).toLocaleDateString() == new Date(filter.date).toLocaleDateString() )
     );
+
+    const onSave = async (orderId, updatedOrder) => {
+        try {
+            await axios.put(`${API_URL}/order/update/${orderId}`, updatedOrder);
+            fetchOrders();
+            setNotification({ open: true, message: 'Order updated successfully' });
+        } catch (error) {
+            console.error('Error updating order:', error);
+            setNotification({ open: true, message: 'Error updating order' });
+        }
+    };
+
+    const onDelete = async (orderId) => {
+        try {
+            await axios.delete(`${API_URL}/order/delete/${orderId}`);
+            fetchOrders();
+            setNotification({ open: true, message: 'Order deleted successfully' });
+        } catch (error) {
+            console.error('Error deleting order:', error);
+            setNotification({ open: true, message: 'Error deleting order' });
+        }
+    };
 
     return (
         <Box sx={{ bgcolor: 'rgba(255,255,255,0.8)', borderRadius: '10px ', width: '100%', position: 'relative', overflowY: 'scroll', maxHeight: '80vh', width: '97.1vw' }}>
@@ -69,7 +91,7 @@ const OrdersPanel = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingTop: '5%' }}>
                 {filteredOrders.length ? (
                     filteredOrders.map(order => (
-                        <OrderCard key={order._id} order={order} setNotification={setNotification} />
+                        <OrderCard key={order._id} order={order} setNotification={setNotification} onSave={onSave} onDelete={onDelete} />
                     ))
                 ) : (
                     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={4} sx={{ minHeight: '30vh', width: '100%', paddingTop: '11%', bgcolor: 'rgba(255,255,255,0.8)', paddingBottom: '5%' }}>

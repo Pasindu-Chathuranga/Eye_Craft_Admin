@@ -20,7 +20,7 @@ const OrderStatusFilter = ({ filter, setFilter }) => {
                 <MenuItem value="pending">Pending</MenuItem>
                 <MenuItem value="processing">Processing</MenuItem>
                 <MenuItem value="completed">Completed</MenuItem>
-                <MenuItem value="completed">Canceled</MenuItem>
+                <MenuItem value="canceled">Canceled</MenuItem>
             </TextField>
             <TextField
                 type="date"
