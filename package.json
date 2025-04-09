@@ -21,6 +21,7 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "axios": "^1.6.8",
+    "chart.js": "^4.4.8",
     "cloudinary": "^2.2.0",
     "cloudinary-react": "^1.8.1",
     "dayjs": "^1.11.13",
