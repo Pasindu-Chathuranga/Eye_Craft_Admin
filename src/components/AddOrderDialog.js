@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import CustomImage from './CustomeImage';
 
-const eyeCountOptions = ['Single iris', 'Duo iris', 'Trio iris', 'Quadruple iris'];
+const eyeCountOptions = ['One Person', 'Two Person', 'Three Person', 'Four Person'];
 const printStyleOptions = ['Paper-based print'];
 const sizeOptions = ['20cmx20cm', '30cmx30cm', '40cmx40cm', '50cmx50cm'];
 const effectsOptions = ['Pure effect', 'Explosion effect', 'Halo effect', 'Dust effect'];
@@ -129,7 +129,7 @@ const AddOrderDialog = ({ open, handleClose, handleSave }) => {
 
                             <Typography variant="subtitle1" fontWeight="bold">Order Info</Typography>
                             {[{
-                                name: 'Eye_Count', label: 'Eye Count', options: eyeCountOptions
+                                name: 'Eye_Count', label: 'Person Count', options: eyeCountOptions
                             }, {
                                 name: 'Print_Style', label: 'Print Style', options: printStyleOptions
                             }, {
