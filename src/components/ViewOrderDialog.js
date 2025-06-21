@@ -74,7 +74,7 @@ const ViewOrderDialog = ({ open, handleClose, orderDetails }) => {
                             <Divider />
 
                             <Typography variant="subtitle1" fontWeight="bold">Order Info</Typography>
-                            <Typography>Eye Count: {order.Eye_Count || 'N/A'}</Typography>
+                            <Typography>Person Count: {order.Eye_Count || 'N/A'}</Typography>
                             <Typography>Print Style: {order.Print_Style || 'N/A'}</Typography>
                             <Typography>Size: {order.Sizes || 'N/A'}</Typography>
                             <Typography>Effect: {order.Effects || 'N/A'}</Typography>

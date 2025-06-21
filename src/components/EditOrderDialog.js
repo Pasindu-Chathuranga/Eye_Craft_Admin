@@ -139,17 +139,17 @@ const EditOrderDialog = ({ open, handleClose, order, handleUpdate }) => {
 
                             <Typography variant="subtitle1" fontWeight="bold">Order Info</Typography>
                             <TextField
-                                label="Eye Count"
+                                label="Person Count"
                                 name="Eye_Count"
                                 select
                                 value={updatedOrder.order.Eye_Count}
                                 onChange={handleChange}
                                 fullWidth
                             >
-                                <MenuItem value="Single iris">Single iris</MenuItem>
-                                <MenuItem value="Duo iris">Duo iris</MenuItem>
-                                <MenuItem value="Trio iris">Trio iris</MenuItem>
-                                <MenuItem value="Quadruple iris">Quadruple iris</MenuItem>
+                                <MenuItem value="One Person">One Person</MenuItem>
+                                <MenuItem value="Two Person">Two Person</MenuItem>
+                                <MenuItem value="Three Person">Three Person</MenuItem>
+                                <MenuItem value="Four Person">Four Person</MenuItem>
                             </TextField>
                             <TextField
                                 label="Print Style"
