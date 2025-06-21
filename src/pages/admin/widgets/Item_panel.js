@@ -56,7 +56,7 @@ const ItemPanel = () => {
 
     // Filter options for each filter type
     const filterOptions = {
-        eye_count: ['Single iris', 'Duo iris', 'Trio iris', 'Quadruple iris', 'Quintuple iris'],
+        Eye_Count: ['One Person', 'Two Person', 'Three Person', 'Four Person'],
         print_style: ['Paper-based print', 'Acrylic Artwork'],
         size: ['20cmx20cm', '30cmx30cm', '40cmx40cm', '50cmx50cm', '60cmx60cm', '80cmx80cm', '100cmx100cm'],
         frame: ['Professional frame picture', 'Standard frame picture'],
@@ -100,7 +100,7 @@ const ItemPanel = () => {
                             ))}
 
                             {/* Show duo_custom_effects filter only when 'eye_count' is 'Duo iris' */}
-                            {filters.eye_count === 'Duo iris' && (
+                            {filters.eye_count === 'Two Person' && (
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <Typography variant="body2" sx={{ mb: 1 }}>Duo Effect</Typography>
                                     <FormControl sx={{ m: 1, minWidth: 100 }}>
