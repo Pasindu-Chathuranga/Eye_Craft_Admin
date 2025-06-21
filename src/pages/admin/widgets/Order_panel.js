@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
-import InboxIcon from '@mui/icons-material/Inbox';
-import EmailIcon from '@mui/icons-material/Email';
-import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
-import placeholderImage from '../../../images/admin/image-holder.svg'
+import MaterialReactTable from 'material-react-table';
+import { Box, Typography } from '@mui/material';
 import { API_URL } from '../../../const/api_url';
 import axios from 'axios';
 
@@ -22,80 +13,58 @@ const OrdersPanel = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await axios.get(API_URL + '/order/get');
-            const data = await response.json();
-            setOrders(data);
+            const response = await axios.get(`${API_URL}/order/get`);
+            // Flatten nested structure to match table format
+            const formatted = response.data.map((order) => ({
+                id: order._id,
+                createdAt: new Date(order.createdAt).toLocaleDateString(),
+                eyeCount: order.order.Eye_Count,
+                printStyle: order.order.Print_Style,
+                sizes: order.order.Sizes,
+                effects: order.order.Effects,
+                frames: order.order.Frames,
+                customerName: order.customer.name,
+                contact: order.customer.contact,
+                address: order.customer.address,
+                city: order.customer.city || 'N/A',
+                email: order.customer.email,
+            }));
+            setOrders(formatted);
         } catch (error) {
             console.error('Error fetching orders:', error);
         }
     };
 
-    return (
-        <div className='order-panel'>
-            <div className='order-panel-header'>
-                <div className='order-panel-header-title'>Orders</div>
-                <div className='order-panel-header-search-bar'>
-                    <input type='text' placeholder='Search' />
-                    <div className='order-panel-header-search-bar-icon'><SearchIcon /></div>
-                    <div className='order-panel-header-search-bar-icon'><CloseIcon /></div>
-                    <div className='item-panel-header-search-bar-icon'><FilterListIcon /></div>
-                </div>
-            </div>
-            <div className='order-panel-body'>
-                {orders.length != 0 ? orders.map(order => (
-                    <Accordion key={order.id} defaultExpanded>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2-content"
-                            id="panel2-header"
-                            sx={{ width: '100%', display: 'flex', flexDirection: 'row' }}
-                        >
-                            <div className='order-panel-body-item-status'>Pending</div>
-                            <div className='order-panel-body-item-date'>12/12/2021</div>
-                            Order Id  :
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <div className='order-panel-body-item'>
-                                <div className='order-panel-data'>
-                                    <div className='order-panel-body-item-title'>Order 1</div>
-                                    <div className='order-panel-body-item-title'>name </div>
-                                    <div className='order-panel-body-item-title'>Contact</div>
-                                    <div className='order-panel-body-item-title'>address</div>
-                                    <div className='order-panel-body-item-title'>city</div>
-                                </div>
-                                <div className='order-panel-middle'>
-                                    <img src={placeholderImage} alt='Placeholder' className='order-image' />
-                                    <div className='order-item-details'>
-                                        <div className='order-panel-body-item-title'>Order 1</div>
-                                        <div className='order-panel-body-item-title'>name </div>
-                                        <div className='order-panel-body-item-title'>Contact</div>
-                                        <div className='order-panel-body-item-title'>address</div>
-                                        <div className='order-panel-body-item-title'>city</div>
-                                    </div>
-                                </div>
-                                <div className='order-panel-body-item-action'>
-                                    <div className='order-panel-body-item-action-icon'><EditIcon /></div>
-                                    <div className='order-panel-body-item-action-icon'><DeleteIcon /></div>
-                                    <div className='order-panel-body-item-action-icon'><DoneIcon /></div>
-                                    <div className='order-panel-body-item-action-icon'><CloseIcon /></div>
-                                    <div className='order-panel-body-item-action-icon'><EmailIcon /></div>
-                                </div>
-                            </div>
+    const columns = [
+        { accessorKey: 'id', header: 'Order ID' },
+        { accessorKey: 'createdAt', header: 'Date' },
+        { accessorKey: 'eyeCount', header: 'Eye Count' },
+        { accessorKey: 'printStyle', header: 'Print Style' },
+        { accessorKey: 'sizes', header: 'Sizes' },
+        { accessorKey: 'effects', header: 'Effects' },
+        { accessorKey: 'frames', header: 'Frames' },
+        { accessorKey: 'customerName', header: 'Customer Name' },
+        { accessorKey: 'contact', header: 'Contact' },
+        { accessorKey: 'address', header: 'Address' },
+        { accessorKey: 'city', header: 'City' },
+        { accessorKey: 'email', header: 'Email' },
+    ];
 
-                        </AccordionDetails>
-                    </Accordion>
-                )) : (
-                    <div className='order-panel-body-no-item'>
-                        <div className='order-panel-body-no-item-icon'><InboxIcon /></div>
-                       <div className='order-panel-col'>
-                                <div className='order-panel-body-no-item-title'>No Order</div>
-                                <div className='order-panel-body-no-item-description'>You have no orders</div>
-                       </div>
-                    </div>
-                )}
-            </div>
-        </div>
+    return (
+        <Box sx={{ padding: 2 }}>
+            <Typography variant="h5" gutterBottom>Orders</Typography>
+            <MaterialReactTable
+                columns={columns}
+                data={orders}
+                enableColumnFilters
+                enableGlobalFilter
+                enableSorting
+                muiTableProps={{
+                    sx: { borderRadius: 2, boxShadow: 1 }
+                }}
+            />
+        </Box>
     );
-}
+};
 
 export default OrdersPanel;

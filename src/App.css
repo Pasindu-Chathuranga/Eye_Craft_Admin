@@ -87,20 +87,7 @@
     /* No additional styling needed for larger screens */
   }
 }
-
-.scrollbar {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: #D2B583;
-  transform-origin: 0%;
-  border-radius: 10px;
-  z-index: 150;
-  border: #162F48 1px solid;
-}
-
+ 
 .main-subtitle {
   z-index: 10;
   font-weight: 700;
@@ -121,31 +108,10 @@
 }
 
 :root {
-  background-color: #162F48;
+  background-color: #0d0d0d;
   padding-right: -15px;
 }
-
-/* width */
-::-webkit-scrollbar {
-  width: 0px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  width: 0px;
-  background-image: linear-gradient(180deg, #162F48 50%, #D2B583 40%, #162F48 100%);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  width: 0px;
-  background: #D2B583;
-  border-radius: 50px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  width: 0px;
-  background: #D2B583;
-  border-radius: 50px;
-}
+ .login-bg {
+   background: url('./images/bg/concept-bg.png') no-repeat center center fixed;
+   background-size: cover;
+ }
