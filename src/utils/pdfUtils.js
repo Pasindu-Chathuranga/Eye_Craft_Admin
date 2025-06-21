@@ -25,7 +25,7 @@ export const downloadOrderRowPDF = (orderDetails) => {
 
     // Order Info
     doc.text('Order Info', 14, 90);
-    doc.text(`Eye Count: ${orderDetails.order.Eye_Count || 'N/A'}`, 14, 100);
+    doc.text(`Person Count: ${orderDetails.order.Eye_Count || 'N/A'}`, 14, 100);
     doc.text(`Print Style: ${orderDetails.order.Print_Style || 'N/A'}`, 14, 110);
     doc.text(`Size: ${orderDetails.order.Sizes || 'N/A'}`, 14, 120);
     doc.text(`Effect: ${orderDetails.order.Effects || 'N/A'}`, 14, 130);
