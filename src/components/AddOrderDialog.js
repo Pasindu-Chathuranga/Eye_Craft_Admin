@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import CustomImage from './CustomeImage';
 
-const eyeCountOptions = ['One Person', 'Two Person', 'Three Person', 'Four Person'];
+const eyeCountOptions = ['Single iris - One person', 'Duo iris - Two people', 'Trio iris - Three people', 'Quadruple iris - Four people'];
 const printStyleOptions = ['Paper-based print'];
 const sizeOptions = ['20cmx20cm', '30cmx30cm', '40cmx40cm', '50cmx50cm'];
 const effectsOptions = ['Pure effect', 'Explosion effect', 'Halo effect', 'Dust effect'];
@@ -86,7 +86,7 @@ const AddOrderDialog = ({ open, handleClose, handleSave }) => {
             ? ['Professional frame picture']
             : frameOptions;
 
-    const dynamicEffects = orderData.order.Eye_Count === 'Duo iris'
+    const dynamicEffects = orderData.order.Eye_Count === 'Duo iris - Two people'
         ? duoEffectsOptions
         : effectsOptions;
 

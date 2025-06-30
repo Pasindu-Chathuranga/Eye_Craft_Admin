@@ -146,10 +146,10 @@ const EditOrderDialog = ({ open, handleClose, order, handleUpdate }) => {
                                 onChange={handleChange}
                                 fullWidth
                             >
-                                <MenuItem value="One Person">One Person</MenuItem>
-                                <MenuItem value="Two Person">Two Person</MenuItem>
-                                <MenuItem value="Three Person">Three Person</MenuItem>
-                                <MenuItem value="Four Person">Four Person</MenuItem>
+                                <MenuItem value="Single iris - One person">Single iris - One person</MenuItem>
+                                <MenuItem value="Duo iris - Two people">Duo iris - Two people</MenuItem>
+                                <MenuItem value="Trio iris - Three people"> Trio iris - Three people</MenuItem>
+                                <MenuItem value="Quadruple iris - Four people">Quadruple iris - Four people</MenuItem>
                             </TextField>
                             <TextField
                                 label="Print Style"
