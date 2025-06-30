@@ -54,42 +54,42 @@ import DuoInFusionStandard from '../images/website eye pics/Duo fusion.jpg';
 
 const Images = [
     // Pure effects
-    { eyeCount: 'Single iris - One person', effect: 'Pure effect', frame: 'Professional frame picture', image: singlePureProfessional },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Pure effect', frame: 'Professional frame picture', image: singlePureProfessional },
     { eyeCount: 'Single iris - One person', effect: 'Pure effect', frame: 'Standard frame picture', image: singlePureStandard },
     { eyeCount: 'Duo iris - Two people', effect: 'Pure effect', frame: 'Professional frame picture', image: DuoPureProfessional },
     { eyeCount: 'Duo iris - Two people', effect: 'Pure effect', frame: 'Standard frame picture', image: DuoPureStandard },
     { eyeCount: 'Trio iris - Three people', effect: 'Pure effect', frame: 'Professional frame picture', image: TrioPureProfessional },
     { eyeCount: 'Trio iris - Three people', effect: 'Pure effect', frame: 'Standard frame picture', image: TrioPureStandard },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Pure effect', frame: 'Professional frame picture', image: QuadruplePureProfessional },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Pure effect', frame: 'Standard frame picture', image: QuadruplePureStandard },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Pure effect', frame: 'Professional frame picture', image: QuadruplePureProfessional },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Pure effect', frame: 'Standard frame picture', image: QuadruplePureStandard },
 
     // Explosion effects
-    { eyeCount: 'Single iris - One person', effect: 'Explosion effect', frame: 'Professional frame picture', image: singleExplosionProfessional },
-    { eyeCount: 'Single iris - One person', effect: 'Explosion effect', frame: 'Standard frame picture', image: singleExplosionStandard },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Explosion effect', frame: 'Professional frame picture', image: singleExplosionProfessional },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Explosion effect', frame: 'Standard frame picture', image: singleExplosionStandard },
     { eyeCount: 'Duo iris - Two people', effect: 'Explosion effect', frame: 'Professional frame picture', image: DuoExplosionProfessional },
     { eyeCount: 'Duo iris - Two people', effect: 'Explosion effect', frame: 'Standard frame picture', image: DuoExplosionStandard },
     { eyeCount: 'Trio iris - Three people', effect: 'Explosion effect', frame: 'Professional frame picture', image: TrioExplosionProfessional },
     { eyeCount: 'Trio iris - Three people', effect: 'Explosion effect', frame: 'Standard frame picture', image: TrioExplosionStandard },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Explosion effect', frame: 'Professional frame picture', image: QuadrupleExplosionProfessional },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Explosion effect', frame: 'Standard frame picture', image: QuadrupleExplosionStandard },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Explosion effect', frame: 'Professional frame picture', image: QuadrupleExplosionProfessional },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Explosion effect', frame: 'Standard frame picture', image: QuadrupleExplosionStandard },
 
     // Halo effects
-    { eyeCount: 'Single iris - One person', effect: 'Halo effect', frame: 'Professional frame picture', image: singleHaloProfessional },
-    { eyeCount: 'Single iris - One person', effect: 'Halo effect', frame: 'Standard frame picture', image: singleHaloStandard },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Halo effect', frame: 'Professional frame picture', image: singleHaloProfessional },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Halo effect', frame: 'Standard frame picture', image: singleHaloStandard },
     { eyeCount: 'Duo iris - Two people', effect: 'Halo effect', frame: 'Professional frame picture', image: DuoHaloProfessional },
     { eyeCount: 'Duo iris - Two people', effect: 'Halo effect', frame: 'Standard frame picture', image: DuoHaloStandard },
     { eyeCount: 'Trio iris - Three people', effect: 'Halo effect', frame: 'Professional frame picture', image: TrioHaloProfessional },
     { eyeCount: 'Trio iris - Three people', effect: 'Halo effect', frame: 'Standard frame picture', image: TrioHaloStandard },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Halo effect', frame: 'Professional frame picture', image: QuadrupleHaloProfessional },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Halo effect', frame: 'Standard frame picture', image: QuadrupleHaloStandard },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Halo effect', frame: 'Professional frame picture', image: QuadrupleHaloProfessional },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Halo effect', frame: 'Standard frame picture', image: QuadrupleHaloStandard },
 
     // Dust effects
-    { eyeCount: 'Single iris - One person', effect: 'Dust effect', frame: 'Professional frame picture', image: singleDustProfessional },
-    { eyeCount: 'Single iris - One person', effect: 'Dust effect', frame: 'Standard frame picture', image: singleDustStandard },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Dust effect', frame: 'Professional frame picture', image: singleDustProfessional },
+    { eyeCount: 'Single iris - Single iris - One person', effect: 'Dust effect', frame: 'Standard frame picture', image: singleDustStandard },
     { eyeCount: 'Trio iris - Three people', effect: 'Dust effect', frame: 'Professional frame picture', image: TrioDustProfessional },
     { eyeCount: 'Trio iris - Three people', effect: 'Dust effect', frame: 'Standard frame picture', image: TrioDustStandard },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Dust effect', frame: 'Professional frame picture', image: QuadrupleDustProfessional },
-    { eyeCount: 'Quadruple iris - Four people', effect: 'Dust effect', frame: 'Standard frame picture', image: QuadrupleDustStandard },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Dust effect', frame: 'Professional frame picture', image: QuadrupleDustProfessional },
+    { eyeCount: 'Quadruple iris - Four people', effect: 'Dust effect', frame: 'Standard frame picture', image: QuadrupleDustStandard },
 
     // Duo iris - Two people effect images 
     { eyeCount: 'Duo iris - Two people', effect: 'Yin Yang effect', frame: 'Professional frame picture', image: DuoYingYangProfessional },
@@ -104,12 +104,12 @@ const Images = [
 ];
 
 const prices = [
-    { product: "Single iris - One person", size: "20cmx20cm", frame: "Standard frame picture", price: 9500 },
-    { product: "Single iris - One person", size: "30cmx30cm", frame: "Standard frame picture", price: 12000 },
-    { product: "Single iris - One person", size: "30cmx30cm", frame: "Professional frame picture", price: 16500 },
-    { product: "Single iris - One person", size: "40cmx40cm", frame: "Standard frame picture", price: 17000 },
-    { product: "Single iris - One person", size: "40cmx40cm", frame: "Professional frame picture", price: 19000 },
-    { product: "Single iris - One person", size: "50cmx50cm", frame: "Professional frame picture", price: 21000 },
+    { product: "Single iris - Single iris - One person", size: "20cmx20cm", frame: "Standard frame picture", price: 9500 },
+    { product: "Single iris - Single iris - One person", size: "30cmx30cm", frame: "Standard frame picture", price: 12000 },
+    { product: "Single iris - Single iris - One person", size: "30cmx30cm", frame: "Professional frame picture", price: 16500 },
+    { product: "Single iris - Single iris - One person", size: "40cmx40cm", frame: "Standard frame picture", price: 17000 },
+    { product: "Single iris - Single iris - One person", size: "40cmx40cm", frame: "Professional frame picture", price: 19000 },
+    { product: "Single iris - Single iris - One person", size: "50cmx50cm", frame: "Professional frame picture", price: 21000 },
 
     { product: "Duo iris - Two people", size: "20cmx20cm", frame: "Standard frame picture", price: 12000 },
     { product: "Duo iris - Two people", size: "30cmx30cm", frame: "Standard frame picture", price: 14500 },
@@ -125,12 +125,12 @@ const prices = [
     { product: "Trio iris - Three people", size: "40cmx40cm", frame: "Professional frame picture", price: 28000 },
     { product: "Trio iris - Three people", size: "50cmx50cm", frame: "Professional frame picture", price: 32500 },
 
-    { product: "Quadruple iris - Four people", size: "20cmx20cm", frame: "Standard frame picture", price: 18500 },
-    { product: "Quadruple iris - Four people", size: "30cmx30cm", frame: "Standard frame picture", price: 23000 },
-    { product: "Quadruple iris - Four people", size: "30cmx30cm", frame: "Professional frame picture", price: 28000 },
-    { product: "Quadruple iris - Four people", size: "40cmx40cm", frame: "Standard frame picture", price: 32000 },
-    { product: "Quadruple iris - Four people", size: "40cmx40cm", frame: "Professional frame picture", price: 36000 },
-    { product: "Quadruple iris - Four people", size: "50cmx50cm", frame: "Professional frame picture", price: 42000 }
+    { product: "Quadruple iris - Four people", size: "20cmx20cm", frame: "Standard frame picture", price: 18500 },
+    { product: "Quadruple iris - Four people", size: "30cmx30cm", frame: "Standard frame picture", price: 23000 },
+    { product: "Quadruple iris - Four people", size: "30cmx30cm", frame: "Professional frame picture", price: 28000 },
+    { product: "Quadruple iris - Four people", size: "40cmx40cm", frame: "Standard frame picture", price: 32000 },
+    { product: "Quadruple iris - Four people", size: "40cmx40cm", frame: "Professional frame picture", price: 36000 },
+    { product: "Quadruple iris - Four people", size: "50cmx50cm", frame: "Professional frame picture", price: 42000 }
 ];
 
 const getSizeDimensions = (size) => {
