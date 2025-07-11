@@ -149,7 +149,7 @@ const EditOrderDialog = ({ open, handleClose, order, handleUpdate }) => {
                                 <MenuItem value="Single iris - One person">Single iris - One person</MenuItem>
                                 <MenuItem value="Duo iris - Two people">Duo iris - Two people</MenuItem>
                                 <MenuItem value="Trio iris - Three people"> Trio iris - Three people</MenuItem>
-                                <MenuItem value="Quadruple iris - Four people">Quadruple iris - Four people</MenuItem>
+                                <MenuItem value="Quadruple iris - Four people">Quadruple iris - Four people</MenuItem>
                             </TextField>
                             <TextField
                                 label="Print Style"
